@@ -13,32 +13,54 @@ func polish(a []rune) int {
 		op := a[1]
 		val := make([]rune, 0)
 		val2 := make([]rune, 0)
-
+		k := 0
 		i := 2
-		if a[2] == rune(40) {
+		if a[i] == rune(40) {
 
-			for i = 2; i < len(a); i++ {
-				if a[i] == 41 {
-					val = append(val, a[i])
-					break
+			for i = i; i < len(a); i++ {
+				if a[i] == 40 {
+
+					k++
 				}
+				if a[i] == 41 {
+
+					k--
+					if k == 0 {
+						val = append(val, a[i])
+						break
+					}
+
+				}
+
 				val = append(val, a[i])
 			}
 		} else {
 			val = append(val, a[i])
 		}
 
-		if a[i+1] == 40 {
+		k = 0
+		i++
+		if a[i] == rune(40) {
 
-			for i = i + 1; i < len(a); i++ {
-				if a[i] == 41 {
-					val2 = append(val2, a[i])
-					break
+			for i = i; i < len(a); i++ {
+				if a[i] == 40 {
+
+					k++
 				}
+				if a[i] == 41 {
+
+					k--
+					if k == 0 {
+						val2 = append(val2, a[i])
+						break
+					}
+
+				}
+
 				val2 = append(val2, a[i])
 			}
 		} else {
-			val2 = append(val2, a[i+1])
+			val2 = append(val2, a[i])
 		}
 
 		switch op {
