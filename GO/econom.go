@@ -1,10 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 )
+
+var m map[string]int
 
 func polish(a []rune) int {
 	if len(a) == 1 {
@@ -53,16 +54,10 @@ func polish(a []rune) int {
 	}
 }
 func main() {
-	myscanner := bufio.NewScanner(os.Stdin)
-	myscanner.Scan()
-	s := myscanner.Text()
-	sl := []rune{} // пустой слайс
-	for _, b := range []byte(s) {
-		if b != ' ' && b != '	' {
-			sl = append(sl, rune(b))
-		}
-	}
-
-	fmt.Println(polish(sl))
+	m = make(map[string]int)
+	var a string
+	fmt.Fscanln(os.Stdin, &a)
+	fmt.Println(len(m))
+	fmt.Println(polish([]rune(a)))
 
 }
