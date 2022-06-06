@@ -136,6 +136,13 @@ func main() {
 
 		}
 	}
-	fmt.Println(gauss(smt))
+	g := gauss(smt)
+	if g == nil {
+		fmt.Println("No solution")
+		return
+	}
+	for i := 0; i < len(g); i++ {
+		fmt.Printf("%d/%d\n", g[i].a, g[i].b)
+	}
 
 }
